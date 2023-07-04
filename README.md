@@ -1,5 +1,18 @@
 # ProjectDevOps
 ## Final Project DevOps - Efrei Paris M1 SE1 Grp4
 
-## Report
-https://efrei365net-my.sharepoint.com/:w:/r/personal/huiting_feng_efrei_net/_layouts/15/doc.aspx?sourcedoc=%7B3db91d9f-9262-47ce-82d2-1a8a05a8ae26%7D&action=edit&cid=e3b0abad-2405-4ea5-ac7a-986207375411
+## Solutions
+### Step 1. Set up a version control system
+### Step 2. Set up a CI/CD pipeline
+    -   Install Jenkins
+    -   Configure Jenkins
+    -   Set up Jenkins Nodes
+    -   Set up the CI/CD pipeline
+### Step 3. Set up notifications
+### Step 4. Containerization with Docker
+### Step 5. Deployment
+### Step 6. Testing
+### Step 7. Change Management
+### Step 8. Key performance indicators (KPIs)
+### Step 9. User acceptance test (UAT)
+
