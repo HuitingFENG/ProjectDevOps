@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration:none; }
+.css-mf1cb5-MuiButtonBase-root-MuiIconButton-root{
+    color:#CBB780FF;
+}
+.css-vj1n65-MuiGrid-root {
+    margin-top: 20px;
+}
+.css-1dslbfu-MuiInputBase-root-MuiOutlinedInput-root{
+    width: 500px !important;
+    height: 60px !important;
+    border-radius: 20px !important;
+    /* border: solid !important;
+    border-color: white !important; */
+}
+.css-19pdx49-MuiButtonBase-root-MuiButton-root{
+    font-weight: bold !important;
+}
+.show_data{
+    border:solid;
+    border-radius:10px;
+    border-color:black;
+    background-color: lightgray !important;
+}
+.reactEasyCrop_CropArea{
+    border-radius:50%;
+}
+.back{
+    color:#CBB780FF;
+    background-color: black !important;
+    border:solid;
+    border-color: white;
+    border-radius: 20px;
+
+}
+.css-1vooibu-MuiSvgIcon-root{
+    color:#CBB780FF;
+    
+}
+.our_cart{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+}
+.Tags_itemss{
+text-align:center;
+margin-bottom: 20px;
+display: inline;
+margin-left: 25%;
+
+position: relative;
+top: -45px;
+}
+/* Page Direction css */
+ 
+.direction-head{
+    text-align: center;
+    max-height: 9rem;
+    background-color: #000000 !important;
+    border-top:1px solid #cbb780 ;
+    padding: 40px 0px;
+}
+.direction-head a{
+    box-shadow: 0 0 0 2px rgb(230 145 0 / 50%);
+    background-image: none;
+    background-color: transparent;
+    border-color: #e69100;
+    padding: 6px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 3px;
+    font-size: 14px;
+    color: #fff;
+}
+.direction-head a:hover{
+    background-color:  #ffc107;
+    cursor: pointer;
+}
+.direction-head h3{
+    color: #cbb780 !important;
+    margin: 0;
+    font-size: 24px;
+}
+.servicename{
+    background-color: #000000 !important;
+    text-align: center;
+    max-height: 9rem;
+    /* margin-bottom: 20px; */
+    padding: 40px 0px;
+     
+
+}
+.servicename h2{
+    color: #cbb780 !important;
+    margin: 0;
+    font-size: 20px;
+}
+/* Fin Direction css */
+
+/* Page Employee css  */
+.empcontainer{
+    display: flex;
+    justify-content: center;
+ }
+.employee {
+    margin-top: 50px !important;
+   background-color: #212121;
+   position: absolute;
+   width: 34rem;
+   margin: 30px ;
+    height: 63rem;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 16px;
+    -webkit-box-shadow: 0px 3px 18px 3px rgb(0 0 0 / 20%);
+    box-shadow: 0px 3px 18px 3px rgb(0 0 0 / 20%);
+}
+.card-header {
+    background-image: linear-gradient(to bottom right, #b3943e, #7c6250);
+    padding: 54px 0px 21px !important;
+    position: relative;
+}
+.agence {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.avatarDetail {
+    border-radius: 50%;
+    width: 15rem;
+    max-width: 15rem
+}
+
+.card-header h2 {
+    color: #FFF;
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+}
+.card-content{
+    padding: 20px;
+}
+.card-header:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-image: linear-gradient(to bottom left, #cbb780 10%, #e9dcd3 115%); */
+    z-index: -1;
+    border-radius: 0px 0px 50% 0px;
+}
+.employee p{
+    font-size: 23px;
+    
+    color: #fff;
+    margin: 27px 5px;
+}
+ 
+/* .userimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+  } */
+ 
+  .gobackbutton{
+    box-shadow: 0 0 0 2px rgb(230 145 0 / 50%);
+    background-image: none;
+    background-color: black;
+    color: #fff;
+    border-color: #e69100;
+    padding: 6px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 15px;
+    display: inline-block;
+    font-size: 16px;
+}
+.gobackbutton:hover{
+    background-color:  #ffc107;
+    cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+    .employee {
+       
+       width:80%;
+     
+    }
+  }
+/* Fin css Employee page */
+
+.css-5ibs0b-MuiBadge-badge {
+    min-width: 92px !important;
+    padding: 0 0px !important;
+    height: 30px !important;
+}
+.reactEasyCrop_Container{
+    margin-top: 30px !important;
+}
+.MuiBox-root css-14ofx3b{
+    background-color:#CBB780FF;
+}
+.MuiBox-root css-tx26vy{
+    background-color:#CBB780FF;
+}
+.upload_img{
+    padding: 8px 20px;
+    background: #CBB780FF;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: solid;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    border-color:#000000;
+}
+.css-1omrlxw-MuiPaper-root-MuiCard-root{
+    border:solid;
+    border-color:#000000;
+}
+.userimg{
+    position: static;
+}
+
+@media screen and (max-width:1300px) {
+    .our_cart{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .our_cart{
+        display: grid;
+        grid-template-columns:  1fr 1fr;
+        gap: 30px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .our_cart{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: 100%;
+    }
+}

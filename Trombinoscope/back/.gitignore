@@ -1,0 +1,4 @@
+node_modules
+# .env
+
+# fichier qui permet lors du push sur github, de ne pas envoyer les nodes modules ( très volumineux) et l'endroit où les données sensibles sont stockés.

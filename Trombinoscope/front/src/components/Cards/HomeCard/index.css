@@ -1,0 +1,71 @@
+/* Style des Cards de la page d'Accueil. */
+.usercontainer{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    gap: 10px;
+    margin: 10px 0px;
+}
+
+
+.user {
+    border: solid;
+    border-color:white;
+    text-align: center;
+    text-decoration: none;
+    color: #CBB780FF;
+    display: inline-block;
+    padding: 25px 10px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    background-color:black;
+    width: 300px;
+    border-radius: 60px;
+    height: 17rem;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.user p{
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+.user h4{
+    font-size: 16px;
+    margin: 15px 0 0;
+    font-weight: 300;
+    
+}
+.user p{
+    text-align: center;
+}
+/* .userimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+  } */
+.userimg img{
+    margin: 0 auto;
+    max-width: 90px;
+    width: 90px;
+    height: 83px;
+    border-radius: 50%;
+    border: 2px solid #CBB780FF;
+}
+@media screen and (max-width: 1400px) {
+    .usercontainer {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    
+  }
+  @media screen and (max-width: 576px) {
+    
+    .user{
+        width:300px;
+    }
+  } 

@@ -1,0 +1,48 @@
+version: "3.4"
+
+x-common-variables: &common-variables
+  MYSQL_USER: root
+  MYSQL_PASSWORD: Zipzip12309
+  MYSQL_DATABASE: trombinoscope
+  REACT_APP_SERVER_PORT: 8000
+
+services:
+  mysql-db:
+    image: mysql
+    container_name: mysql_container
+    environment:
+      <<: *common-variables
+      MYSQL_HOST: localhost
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    volumes:
+      - ./db/trombinoscope.sql:/docker-entrypoint-initdb.d/trombinoscope.sql
+  back:
+    build: ./back
+    container_name: express_container
+    depends_on:
+      - mysql-db
+    environment:
+      <<: *common-variables
+      MYSQL_HOST_IP: mysql-db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./back:/app/
+    links:
+      - mysql-db
+    command: npm start
+  front:
+    build: ./front
+    container_name: react_container
+    environment:
+      <<: *common-variables
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/app
+    links:
+      - back
+    command: npm start
