@@ -53,10 +53,8 @@ pipeline {
 
     post {
          always {
-            node {
-                // Clean up after the build, e.g., remove temporary Docker containers or volumes
-                sh "docker system prune -af"
-            }
+            // Clean up after the build, e.g., remove temporary Docker containers or volumes
+            sh "docker system prune -af"
         }
         success {
             echo 'Build successful! Deploy your application.'
