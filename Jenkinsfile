@@ -1,5 +1,4 @@
 pipeline {
-    agent any
 
     environment {
         DOCKER_REGISTRY_CREDENTIALS = credentials('docker-hub-credentials')
