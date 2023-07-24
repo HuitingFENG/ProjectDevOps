@@ -1,0 +1,15 @@
+<div class="container-fluid mt-5 d-flex align-items-center flex-column">
+  <img src="assets/logo_dark.svg" width="256" height="256" alt="Logo de l'entreprise">
+  <form [formGroup]="loginForm" (ngSubmit)="authenticate()" class="login-form d-flex flex-column">
+
+    <app-form-field title="Adresse e-mail" form_control_name="email" [form]="loginForm" [validation_messages]="validation_messages"></app-form-field>
+    <app-form-field title="Mot de passe" form_control_name="password" [form]="loginForm" [validation_messages]="validation_messages"></app-form-field>
+
+    <div *ngIf="wrong_credentials">
+      <p id="wrongCredential" class="alert alert-danger centered w-75 mt-2">E-mail ou mot de passe incorrect !</p>
+    </div>
+
+    <button id="connectButton" type="submit" [disabled]="!loginForm.valid" class="btn btn-primary rounded-pill centered w-50 mt-3">Se connecter</button>
+    <button type="button" class="btn btn-secondary rounded-pill centered w-50 mt-3" routerLink="/">Annuler</button>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+<app-navbar [selected]="0"></app-navbar>
+<div *ngIf="loaded" class="d-flex flex-column align-items-center justify-content-center">
+  <div class="w-75 mt-5">
+    <h1 class="text-start">Bonjour, vous possédez actuellement {{countServers()}}</h1>
+  </div>
+  <div class="d-flex flex-wrap w-75 align-items-center justify-content-around">
+    <app-server-card class="server-card" (click)="navigateToServer(abonnement.id)" *ngFor="let abonnement of abonnements" [vcores]="abonnement.vcores" [ram]="abonnement.ram" [disque]="abonnement.disque" [io]="abonnement.bande_passante" [os]="abonnement.os" [date_debut]="abonnement.date_debut" [date_fin]="abonnement.date_fin"></app-server-card>
+    <div class="card m-2 server-card shadow-hover" (click)="navigateToRent()">
+      <img class="card-img-top mt-3" src="assets/plus.png" alt="Ajouter un serveur"/>
+      <div class="card-body text-center">
+        <h5 class="card-title">Ajouter un serveur</h5>
+      </div>
+    </div>
+  </div>
+</div>
+

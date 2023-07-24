@@ -1,0 +1,8 @@
+.tech_background {
+  background: url("src/assets/tech_background.jpg") no-repeat left center;
+  background-size: cover;
+}
+
+.wide-text {
+  max-width: 1300px;
+}

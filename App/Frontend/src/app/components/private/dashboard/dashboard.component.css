@@ -1,0 +1,9 @@
+.server-card {
+  width: 30%;
+  min-width: 300px;
+  cursor: pointer;
+}
+
+.server-card img {
+  max-height: 200px;
+}

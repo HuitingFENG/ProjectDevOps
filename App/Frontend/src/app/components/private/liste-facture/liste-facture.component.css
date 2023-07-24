@@ -1,0 +1,12 @@
+li {
+  border-top-width: 1px !important;
+  cursor: pointer;
+  transition-duration: 100ms;
+}
+
+li:hover {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+  background-color: rgba(0, 0, 0, .05);
+  transform: scale(0.995, 0.95);
+  margin: 3px;
+}

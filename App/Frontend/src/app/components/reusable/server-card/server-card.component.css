@@ -1,0 +1,9 @@
+img {
+  max-height: 200px;
+}
+
+/* On applique le style à l'intérieur du composant car si on le fait depuis l'extérieur on obtient une bordure blanche moche */
+/* On le fait également grossir un peu moins que dans le style normal */
+.shadow-hover:hover {
+  transform: scale(1.05, 1.05);
+}

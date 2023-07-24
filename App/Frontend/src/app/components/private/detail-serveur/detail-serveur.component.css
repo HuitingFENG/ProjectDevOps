@@ -1,0 +1,30 @@
+.fixed-top-right{
+  position: fixed;
+  top: 120px;
+  right: 10px;
+}
+
+.container-left-growing {
+  width: 75%;
+}
+
+@media (max-width: 1300px) {
+  .fixed-top-right {
+    position: static;
+    top: 0;
+    right: 0;
+  }
+
+  .container-left-growing {
+    width: 100%;
+  }
+}
+
+.min-width-19 {
+  min-width: 19rem;
+}
+
+.shift-down {
+  position: absolute;
+  bottom: 15px
+}

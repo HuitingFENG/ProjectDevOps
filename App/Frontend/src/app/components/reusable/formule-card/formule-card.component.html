@@ -1,0 +1,13 @@
+<div class="card p-2" *ngIf="formule">
+  <div class="card-title text-center fixed-height d-flex flex-column">
+    <h1>{{factureManager.formatCurrency(formule.prix)}}</h1>
+    <h2>{{formule.nom_formule}}</h2>
+    <p class="text-muted">{{formule.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{formule.vcores}} Vcores</li>
+    <li class="list-group-item">{{formule.ram}} de RAM</li>
+    <li class="list-group-item">{{formule.disque}} de SDD</li>
+    <li class="list-group-item">{{formule.bande_passante}}Mb/s de bande passante</li>
+  </ul>
+</div>

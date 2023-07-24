@@ -1,0 +1,28 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+img {
+  object-fit: contain;
+}
+
+/* On applique ce style que pour le bouton d'ajout car les autres s'en occupent déjà eux-mêmes */
+.shadow-hover:hover {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+  transform: scale(1.1, 1.1); /* Croissance un peu plus grande ici car la card est plus petite, + éventuel aspect psychologique ? */
+}
+.shadow-hover {
+  transition-duration: 100ms;
+  transition-property: box-shadow, transform;
+}
+
+.shrink-click:active {
+  transform: scale(0.9, 0.9);
+}
+.shrink-click {
+  transition-duration: 100ms;
+  transition-property: transform;
+}

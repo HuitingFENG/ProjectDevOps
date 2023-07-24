@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg p-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/dashboard">
+      <img src="assets/logo_light.svg" height="64" width="64" class="d-inline-block align-text-top" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [collapse]="isCollapsed" [isAnimated]="true">
+      <ul class="navbar-nav">
+        <li *ngFor="let item of nav_items; let i = index" class="nav-item">
+          <a class="nav-link fs-3 me-4" [routerLink]="item[1]" [ngClass]="{'active': i === selected}">{{item[0]}}</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-light ms-auto fs-6" (click)="disconnect()">Se déconnecter</button>
+    </div>
+  </div>
+</nav>

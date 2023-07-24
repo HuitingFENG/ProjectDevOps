@@ -1,0 +1,15 @@
+a {
+  transition: transform 100ms linear 0ms;
+}
+
+.bold_on_hover {
+  transition-duration: 50ms;
+}
+
+.bold_on_hover:hover {
+  font-weight: bold;
+}
+
+a:hover {
+  transform: scale(1.05, 1.05);
+}

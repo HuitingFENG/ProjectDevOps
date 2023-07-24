@@ -1,0 +1,37 @@
+<app-navbar [selected]="-1"></app-navbar>
+<div class="d-flex flex-column align-items-center justify-content-center mt-5" *ngIf="facture">
+  <h1 class="text-center">Facture du {{facture.date_facture.toLocaleDateString()}}</h1>
+  <h3 class="text-center w-75">Facture&nbsp;N°{{facture.id_facture}} - Abonnement&nbsp;N°{{facture.id_abonnement}}</h3>
+
+  <ul class="list-group list-group-flush container-sm fs-5 mt-3">
+    <li class="list-group-item d-flex justify-content-between bg-light bold_on_hover">
+      <p class="me-5">Vcores&nbsp;: {{facture.vcores}}</p>
+      <p>{{factureManager.formatCurrency(facture.vcores_prix)}}</p>
+    </li>
+    <li class="list-group-item d-flex justify-content-between bold_on_hover">
+      <!-- On remplace les espaces dans les strings formatés reçus du backend par des espaces insécables pour ne pas casser la layout en mode mobile -->
+      <p class="me-5">RAM&nbsp;: {{facture.ram.replace(' ', '&nbsp;')}}</p>
+      <p>{{factureManager.formatCurrency(facture.ram_prix)}}</p>
+    </li>
+    <li class="list-group-item d-flex justify-content-between bg-light bold_on_hover">
+      <p class="me-5">Espace disque&nbsp;: {{facture.disque.replace(' ', '&nbsp;')}}</p>
+      <p>{{factureManager.formatCurrency(facture.disque_prix)}}</p>
+    </li>
+    <li class="list-group-item d-flex justify-content-between bold_on_hover">
+      <p class="me-5">Système d'exploitation&nbsp;: {{facture.os.replace(' ', '&nbsp;')}}</p>
+      <p>{{factureManager.formatCurrency(facture.os_prix)}}</p>
+    </li>
+    <li class="list-group-item d-flex justify-content-between bg-light bold_on_hover">
+      <p class="me-5">Bande passante&nbsp;: {{facture.bande_passante}}Mb/s</p>
+      <p>{{factureManager.formatCurrency(facture.io_prix)}}</p>
+    </li>
+  </ul>
+  <span class="border border-1 border-dark container-sm"></span>
+  <div class="d-flex justify-content-between container-sm fs-4 bold_on_hover">
+    <p>Total :</p>
+    <p>{{factureManager.formatCurrency(facture.montant)}}</p>
+  </div>
+
+  <!-- On utilise un lien au lieu d'un bouton avec une commande pour que le navigateur s'occupe du téléchargement à notre place -->
+  <a class="btn btn-dark mt-5" [href]="environment.api_url + '/download_facture/' + facture.id_facture">Télécharger la facture</a>
+</div>

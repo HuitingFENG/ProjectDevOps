@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  test-db:
+    image: mysql:8.0.22
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'test_db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ../SQL/Database_creation.sql:/docker-entrypoint-initdb.d/1.sql
+  back-test:
+    image: devops/test-backend
+    build:
+      context: ./
+      dockerfile: ./test.Dockerfile
+    environment:
+      DB_USER: 'user'
+      DB_PASSWORD: 'password'
+      DB_HOST: 'test-db'
+      TEST_DB_NAME: 'test_db'
+      DB_PORT: '3306'
+      WAIT_HOSTS: 'test-db:3306'
+      WAIT_HOSTS_TIMEOUT: '60'
+      NODE_ENV: 'test'
+      SECRET: 'test'
+
+    ports:
+      - '3000:3000'
+    depends_on:
+      - test-db

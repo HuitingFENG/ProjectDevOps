@@ -1,0 +1,28 @@
+<div class="container-fluid mt-5 d-flex align-items-center flex-column">
+  <img src="assets/logo_dark.svg" width="256" height="256" alt="Logo de l'entreprise">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form d-flex flex-column">
+
+    <app-form-field title="Adresse e-mail" form_control_name="email" [form]="registerForm" [validation_messages]="validation_messages"></app-form-field>
+
+    <!-- On utilise pas le app-form-field ici car le fonctionnement est plus complexe et unique -->
+    <h4 class="text-left mt-2">Mot de passe</h4>
+    <div formGroupName="passwords">
+      <div class="col">
+        <input placeholder="Mot de passe" type="password" formControlName="password" required class="form-control border-round m-1" autocomplete="new-password">
+      </div>
+      <div class="col">
+        <input placeholder="Validation du mot de passe" type="password" formControlName="confirm_password" required class="form-control border-round m-1" autocomplete="new-password">
+      </div>
+    </div>
+    <div *ngFor="let validation of validation_messages.passwords">
+      <p *ngIf="invalid_input('passwords', validation.type)" class="alert alert-danger centered w-75 mt-2">{{validation.message}}</p>
+    </div>
+
+    <app-form-field title="Nom" form_control_name="nom" [form]="registerForm" [validation_messages]="validation_messages"></app-form-field>
+
+    <app-form-field title="Prénom" form_control_name="prenom" [form]="registerForm" [validation_messages]="validation_messages"></app-form-field>
+
+    <button id="connectButton" type="submit" [disabled]="!registerForm.valid" class="btn btn-primary rounded-pill centered w-50 mt-3">S'inscrire</button>
+    <button type="button" class="btn btn-secondary rounded-pill centered w-50 mt-3" routerLink="/">Annuler</button>
+  </form>
+</div>

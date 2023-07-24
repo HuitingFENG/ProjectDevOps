@@ -1,0 +1,13 @@
+<div class="card m-2 shadow-hover">
+  <img class="card-img-top p-3" [src]="searchLogo()" alt="Logo du système d'exploitation"/>
+  <div class="card-body">
+    <h5 class="card-title">VPS {{os}}</h5>
+    <h6 class="card-subtitle text-muted m-2">Crée le {{date_debut.toLocaleDateString()}}{{displayEndDate()}}</h6>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">RAM : {{ram}}</li>
+      <li class="list-group-item">Disque : {{disque}}</li>
+      <li class="list-group-item">Bande passante : {{io}}Mb/s</li>
+    </ul>
+  </div>
+  <ng-content></ng-content>
+</div>

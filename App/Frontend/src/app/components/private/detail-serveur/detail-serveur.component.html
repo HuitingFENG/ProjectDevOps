@@ -1,0 +1,80 @@
+<app-navbar [selected]="-1"></app-navbar>
+<div *ngIf="abonnement" class="fixed-top-right">
+  <app-server-card [vcores]="abonnement.vcores" [ram]="abonnement.ram" [disque]="abonnement.disque" [os]="abonnement.os" [io]="abonnement.bande_passante" [date_debut]="abonnement.date_debut" [date_fin]="abonnement.date_fin">
+    <!-- Affichage du bouton pour allumer/éteindre le serveur à l'intérieur de la carte (uniquement si le serveur n'a pas expiré) -->
+    <div class="d-flex flex-column justify-content-center align-content-center align-items-center" *ngIf="!expired">
+      <!-- spinner pour l'animation de changement d'état -->
+      <div *ngIf="changing_state" class="spinner-border shift-down"></div>
+      <!-- Bouton pour allumer/éteindre -->
+      <button class="btn d-flex align-content-center min-width-19" [ngClass]="{'btn-success': on, 'btn-danger': !on}" [disabled]="changing_state" (click)="flipOnOff()">
+        <fa-icon [icon]="faPowerOff" size="3x"></fa-icon>
+        <span class="fs-2 ms-3">Serveur {{on ? 'allumé' : 'éteint'}}</span>
+      </button>
+    </div>
+  </app-server-card>
+</div>
+<div *ngIf="abonnement">
+  <div *ngIf="!expired; else expiredMessage" class="d-flex flex-column align-items-center mt-5 text-center container-left-growing">
+    <h1>Serveur actif depuis le {{abonnement.date_debut.toLocaleDateString()}}</h1>
+    <h3>Prochaine facture le {{nextBillDate()}}</h3>
+
+    <div class="card container-sm mt-3 p-2">
+      <h3 class="card-title text-center">Utilisation du CPU</h3>
+      <canvas baseChart class="card-img-top"
+              [datasets]="on ? CpuUseData : []"
+              [labels]="CpuUseLabels"
+              [colors]="CpuUseColor"
+              [options]="LineChartOptions"
+              [legend]="ChartUseLegend"
+              [chartType]="'line'">
+      </canvas>
+    </div>
+    <div class="card container-sm mt-3 p-2">
+      <h3 class="card-title text-center">Utilisation de la RAM</h3>
+      <canvas baseChart class="card-img-top"
+              [datasets]="on ? RamUseData : []"
+              [labels]="RamUseLabels"
+              [colors]="RamUseColor"
+              [options]="LineChartOptions"
+              [legend]="ChartUseLegend"
+              [chartType]="'line'">
+      </canvas>
+    </div>
+    <div class="card container-sm mt-3 p-2">
+      <h3 class="card-title text-center">Utilisation du SSD</h3>
+      <canvas baseChart class="card-img-top"
+              [datasets]="DiskUseData"
+              [labels]="DiskUseLabels"
+              [colors]="DiskUseColors"
+              [options]="DoughnutChartOptions"
+              [legend]="ChartUseLegend"
+              [chartType]="'doughnut'">
+      </canvas>
+    </div>
+
+    <button class="btn btn-outline-danger w-50 align-self-center my-3" *ngIf="abonnement.date_fin === null" (click)="openCancelModal(cancelModal)">Annuler l'abonnement</button>
+  </div>
+  <ng-template #expiredMessage>
+    <div class="mt-5 ms-2">
+      <h1>Ce serveur a dépassé sa date d'expiration.</h1>
+      <h3>Merci de nous avoir fait confiance pendant tout ce temps.</h3>
+    </div>
+  </ng-template>
+</div>
+
+<!-- Fenêtre modal de confirmation -->
+<ng-template #cancelModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Nous sommes désolés de vous voir partir !</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="cancelModalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Êtes-vous sûr de vouloir annuler cet abonnement ? Cette action est définitive.</p>
+    <div class="d-flex justify-content-center align-items-center">
+      <button class="btn btn-outline-danger me-3" (click)="cancelAbonnement()">Oui</button>
+      <button class="btn btn-primary ms-3" (click)="cancelModalRef?.hide()">Non</button>
+    </div>
+  </div>
+</ng-template>
