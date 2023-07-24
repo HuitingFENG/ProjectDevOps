@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -19,22 +18,28 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Build your application here
-                sh 'npm install'
+                // Execute the 'npm install' command on a Jenkins agent that has access to the filesystem
+                node {
+                    sh 'npm install'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                // Run tests for your application here
-                sh 'npm test'
+                // Execute the 'npm test' command on a Jenkins agent that has access to the filesystem
+                node {
+                    sh 'npm test'
+                }
             }
         }
 
         stage('Dockerize') {
             steps {
-                // Build the Docker image using the Dockerfile in the application directory
-                sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
+                // Execute the 'docker build' command on a Jenkins agent that has access to the filesystem
+                node {
+                    sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
+                }
             }
         }
 
@@ -52,7 +57,7 @@ pipeline {
     }
 
     post {
-         always {
+        always {
             // Clean up after the build, e.g., remove temporary Docker containers or volumes
             sh "docker system prune -af"
         }
