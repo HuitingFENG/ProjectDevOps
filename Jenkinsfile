@@ -12,7 +12,10 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from the Git repository
-                git branch: 'main', url: GIT_REPO_URL
+                node {
+                    // Set the label to "any" to run on any available agent
+                    checkout scm
+                }
             }
         }
 
@@ -47,11 +50,15 @@ pipeline {
             steps {
                 // Log in to Docker Hub
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_REGISTRY_PASSWORD', usernameVariable: 'DOCKER_REGISTRY_USERNAME')]) {
-                    sh "docker login -u ${DOCKER_REGISTRY_USERNAME} -p ${DOCKER_REGISTRY_PASSWORD}"
+                    node {
+                        sh "docker login -u ${DOCKER_REGISTRY_USERNAME} -p ${DOCKER_REGISTRY_PASSWORD}"
+                    }
                 }
 
                 // Push the Docker image to Docker Hub
-                sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+                node {
+                    sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+                }
             }
         }
     }
@@ -59,7 +66,9 @@ pipeline {
     post {
         always {
             // Clean up after the build, e.g., remove temporary Docker containers or volumes
-            sh "docker system prune -af"
+            node {
+                sh "docker system prune -af"
+            }
         }
         success {
             echo 'Build successful! Deploy your application.'
