@@ -12,37 +12,28 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from the Git repository
-                node {
-                    // Set the label to "any" to run on any available agent
-                    checkout scm
-                }
+                git branch: 'main', url: GIT_REPO_URL
             }
         }
 
         stage('Build') {
             steps {
-                // Execute the 'npm install' command on a Jenkins agent that has access to the filesystem
-                node {
-                    sh 'npm install'
-                }
+                // Build your application here
+                sh 'npm install'
             }
         }
 
         stage('Test') {
             steps {
-                // Execute the 'npm test' command on a Jenkins agent that has access to the filesystem
-                node {
-                    sh 'npm test'
-                }
+                // Run tests for your application here
+                sh 'npm test'
             }
         }
 
         stage('Dockerize') {
             steps {
-                // Execute the 'docker build' command on a Jenkins agent that has access to the filesystem
-                node {
-                    sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
-                }
+                // Build the Docker image using the Dockerfile in the application directory
+                sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
             }
         }
 
@@ -50,15 +41,11 @@ pipeline {
             steps {
                 // Log in to Docker Hub
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_REGISTRY_PASSWORD', usernameVariable: 'DOCKER_REGISTRY_USERNAME')]) {
-                    node {
-                        sh "docker login -u ${DOCKER_REGISTRY_USERNAME} -p ${DOCKER_REGISTRY_PASSWORD}"
-                    }
+                    sh "docker login -u ${DOCKER_REGISTRY_USERNAME} -p ${DOCKER_REGISTRY_PASSWORD}"
                 }
 
                 // Push the Docker image to Docker Hub
-                node {
-                    sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
-                }
+                sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
             }
         }
     }
@@ -66,9 +53,7 @@ pipeline {
     post {
         always {
             // Clean up after the build, e.g., remove temporary Docker containers or volumes
-            node {
-                sh "docker system prune -af"
-            }
+            sh "docker system prune -af"
         }
         success {
             echo 'Build successful! Deploy your application.'
