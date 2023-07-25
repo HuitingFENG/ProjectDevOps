@@ -54,7 +54,7 @@ pipeline {
         always {
             // Clean up after the build, e.g., remove temporary Docker containers or volumes
             node {
-                // The `docker system prune -af` command will be executed inside the Docker container
+                label "${currentBuild.currentExecutor.displayName}"
                 sh "docker system prune -af"
             }
         }
