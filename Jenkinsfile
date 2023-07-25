@@ -53,7 +53,7 @@ pipeline {
     post {
         always {
             // Clean up after the build, e.g., remove temporary Docker containers or volumes
-            dockerNode {
+            node {
                 // The `docker system prune -af` command will be executed inside the Docker container
                 sh "docker system prune -af"
             }
